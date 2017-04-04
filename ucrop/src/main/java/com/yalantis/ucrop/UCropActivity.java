@@ -84,13 +84,20 @@ public class UCropActivity extends AppCompatActivity {
     private int mStatusBarColor;
     private int mActiveWidgetColor;
     private int mToolbarWidgetColor;
-    @ColorInt private int mRootViewBackgroundColor;
-    @DrawableRes private int mToolbarCancelDrawable;
-    @DrawableRes private int mToolbarCropDrawable;
+    @ColorInt
+    private int mRootViewBackgroundColor;
+    @DrawableRes
+    private int mToolbarCancelDrawable;
+    @DrawableRes
+    private int mToolbarCropDrawable;
     private int mLogoColor;
 
     private boolean mShowBottomControls;
     private boolean mShowLoader = true;
+
+    private boolean mShowScale;
+    private boolean mShowAspectRatio;
+    private boolean mShowRotate;
 
     private UCropView mUCropView;
     private GestureCropImageView mGestureCropImageView;
@@ -278,6 +285,9 @@ public class UCropActivity extends AppCompatActivity {
         mLogoColor = intent.getIntExtra(UCrop.Options.EXTRA_UCROP_LOGO_COLOR, ContextCompat.getColor(this, R.color.ucrop_color_default_logo));
         mShowBottomControls = !intent.getBooleanExtra(UCrop.Options.EXTRA_HIDE_BOTTOM_CONTROLS, false);
         mRootViewBackgroundColor = intent.getIntExtra(UCrop.Options.EXTRA_UCROP_ROOT_VIEW_BACKGROUND_COLOR, ContextCompat.getColor(this, R.color.ucrop_color_crop_background));
+        mShowScale = intent.getExtras().getBoolean(UCrop.Options.EXTRA_BOTTOM_CONTROL_SCALE, true);
+        mShowAspectRatio = intent.getExtras().getBoolean(UCrop.Options.EXTRA_BOTTOM_CONTROL_ASPECT_RATIO, true);
+        mShowRotate = intent.getExtras().getBoolean(UCrop.Options.EXTRA_BOTTOM_CONTROL_ROTATE, true);
 
         setupAppBar();
         initiateRootViews();
@@ -288,10 +298,15 @@ public class UCropActivity extends AppCompatActivity {
 
             mWrapperStateAspectRatio = (ViewGroup) findViewById(R.id.state_aspect_ratio);
             mWrapperStateAspectRatio.setOnClickListener(mStateClickListener);
+            mWrapperStateAspectRatio.setVisibility(mShowAspectRatio ? View.VISIBLE : View.GONE);
+
             mWrapperStateRotate = (ViewGroup) findViewById(R.id.state_rotate);
             mWrapperStateRotate.setOnClickListener(mStateClickListener);
+            mWrapperStateRotate.setVisibility(mShowRotate ? View.VISIBLE : View.GONE);
+
             mWrapperStateScale = (ViewGroup) findViewById(R.id.state_scale);
             mWrapperStateScale.setOnClickListener(mStateClickListener);
+            mWrapperStateScale.setVisibility(mShowScale ? View.VISIBLE : View.GONE);
 
             mLayoutAspectRatio = (ViewGroup) findViewById(R.id.layout_aspect_ratio);
             mLayoutRotate = (ViewGroup) findViewById(R.id.layout_rotate_wheel);

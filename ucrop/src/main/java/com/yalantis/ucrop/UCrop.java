@@ -274,6 +274,10 @@ public class UCrop {
 
         public static final String EXTRA_UCROP_ROOT_VIEW_BACKGROUND_COLOR = EXTRA_PREFIX + ".UcropRootViewBackgroundColor";
 
+        public static final String EXTRA_BOTTOM_CONTROL_SCALE = EXTRA_PREFIX + ".BottomControlScale";
+        public static final String EXTRA_BOTTOM_CONTROL_ASPECT_RATIO = EXTRA_PREFIX + ".BottomControlAspectRatio";
+        public static final String EXTRA_BOTTOM_CONTROL_ROTATE = EXTRA_PREFIX + ".BottomControlRotate";
+
 
         private final Bundle mOptionBundle;
 
@@ -529,6 +533,12 @@ public class UCrop {
         public void withMaxResultSize(@IntRange(from = 100) int width, @IntRange(from = 100) int height) {
             mOptionBundle.putInt(EXTRA_MAX_SIZE_X, width);
             mOptionBundle.putInt(EXTRA_MAX_SIZE_Y, height);
+        }
+
+        public void setBottomControlsEnabled(boolean scale, boolean aspectRatio, boolean rotate) {
+            mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_SCALE, scale);
+            mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_ASPECT_RATIO, aspectRatio);
+            mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_ROTATE, rotate);
         }
 
     }
