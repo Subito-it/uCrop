@@ -14,7 +14,6 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.FloatRange;
 import android.support.annotation.IntRange;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -279,8 +278,6 @@ public class UCrop {
         public static final String EXTRA_BOTTOM_CONTROL_SCALE = EXTRA_PREFIX + ".BottomControlScale";
         public static final String EXTRA_BOTTOM_CONTROL_ASPECT_RATIO = EXTRA_PREFIX + ".BottomControlAspectRatio";
         public static final String EXTRA_BOTTOM_CONTROL_ROTATE = EXTRA_PREFIX + ".BottomControlRotate";
-
-        public static final String EXTRA_RESET_ICON = EXTRA_PREFIX + ".ResetIcon";
 
 
         private final Bundle mOptionBundle;
@@ -547,10 +544,6 @@ public class UCrop {
             mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_SCALE, scale);
             mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_ASPECT_RATIO, aspectRatio);
             mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_ROTATE, rotate);
-        }
-
-        public void setResetIcon(@IntegerRes int icon) {
-            mOptionBundle.putInt(EXTRA_RESET_ICON, icon);
         }
 
     }
