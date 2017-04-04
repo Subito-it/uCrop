@@ -167,7 +167,7 @@ public class UCropActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.menu_crop) {
             cropAndSaveImage();
         } else if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+            reset();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -546,9 +546,18 @@ public class UCropActivity extends AppCompatActivity {
         }
     }
 
+    private void reset() {
+        mGestureCropImageView.zoomOutImage(1);
+        resetRotation(false);
+    }
+
     private void resetRotation() {
+        resetRotation(true);
+    }
+
+    private void resetRotation(boolean animate) {
         mGestureCropImageView.postRotate(-mGestureCropImageView.getCurrentAngle());
-        mGestureCropImageView.setImageToWrapCropBounds();
+        mGestureCropImageView.setImageToWrapCropBounds(animate);
     }
 
     private void rotateByAngle(int angle) {
