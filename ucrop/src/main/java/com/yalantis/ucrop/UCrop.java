@@ -14,6 +14,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.FloatRange;
 import android.support.annotation.IntRange;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -263,6 +264,7 @@ public class UCrop {
         public static final String EXTRA_UCROP_TITLE_TEXT_TOOLBAR = EXTRA_PREFIX + ".UcropToolbarTitleText";
         public static final String EXTRA_UCROP_WIDGET_CANCEL_DRAWABLE = EXTRA_PREFIX + ".UcropToolbarCancelDrawable";
         public static final String EXTRA_UCROP_WIDGET_CROP_DRAWABLE = EXTRA_PREFIX + ".UcropToolbarCropDrawable";
+        public static final String EXTRA_UCROP_WIDGET_BACKGROUND_COLOR = EXTRA_PREFIX + ".WidgetBackgroundColor";
 
         public static final String EXTRA_UCROP_LOGO_COLOR = EXTRA_PREFIX + ".UcropLogoColor";
 
@@ -277,6 +279,8 @@ public class UCrop {
         public static final String EXTRA_BOTTOM_CONTROL_SCALE = EXTRA_PREFIX + ".BottomControlScale";
         public static final String EXTRA_BOTTOM_CONTROL_ASPECT_RATIO = EXTRA_PREFIX + ".BottomControlAspectRatio";
         public static final String EXTRA_BOTTOM_CONTROL_ROTATE = EXTRA_PREFIX + ".BottomControlRotate";
+
+        public static final String EXTRA_RESET_ICON = EXTRA_PREFIX + ".ResetIcon";
 
 
         private final Bundle mOptionBundle;
@@ -438,6 +442,10 @@ public class UCrop {
             mOptionBundle.putInt(EXTRA_UCROP_WIDGET_COLOR_TOOLBAR, color);
         }
 
+        public void setToolbarWidgetBackgroundColor(@ColorInt int color) {
+            mOptionBundle.putInt(EXTRA_UCROP_WIDGET_BACKGROUND_COLOR, color);
+        }
+
         /**
          * @param text - desired text for Toolbar title
          */
@@ -539,6 +547,10 @@ public class UCrop {
             mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_SCALE, scale);
             mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_ASPECT_RATIO, aspectRatio);
             mOptionBundle.putBoolean(EXTRA_BOTTOM_CONTROL_ROTATE, rotate);
+        }
+
+        public void setResetIcon(@IntegerRes int icon) {
+            mOptionBundle.putInt(EXTRA_RESET_ICON, icon);
         }
 
     }

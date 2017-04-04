@@ -64,6 +64,7 @@ public class UCropActivity extends AppCompatActivity {
     public static final int SCALE = 1;
     public static final int ROTATE = 2;
     public static final int ALL = 3;
+    private int mWidgetBackground;
 
     @IntDef({NONE, SCALE, ROTATE, ALL})
     @Retention(RetentionPolicy.SOURCE)
@@ -288,6 +289,7 @@ public class UCropActivity extends AppCompatActivity {
         mShowScale = intent.getExtras().getBoolean(UCrop.Options.EXTRA_BOTTOM_CONTROL_SCALE, true);
         mShowAspectRatio = intent.getExtras().getBoolean(UCrop.Options.EXTRA_BOTTOM_CONTROL_ASPECT_RATIO, true);
         mShowRotate = intent.getExtras().getBoolean(UCrop.Options.EXTRA_BOTTOM_CONTROL_ROTATE, true);
+        mWidgetBackground = intent.getIntExtra(UCrop.Options.EXTRA_UCROP_WIDGET_BACKGROUND_COLOR, 0);
 
         setupAppBar();
         initiateRootViews();
@@ -295,6 +297,13 @@ public class UCropActivity extends AppCompatActivity {
         if (mShowBottomControls) {
             ViewGroup photoBox = (ViewGroup) findViewById(R.id.ucrop_photobox);
             View.inflate(this, R.layout.ucrop_controls, photoBox);
+
+            if (mWidgetBackground != 0) {
+                View wrapperControls = findViewById(R.id.wrapper_controls);
+                View wrapperStates = findViewById(R.id.wrapper_states);
+                wrapperControls.setBackgroundColor(mWidgetBackground);
+                wrapperStates.setBackgroundColor(mWidgetBackground);
+            }
 
             mWrapperStateAspectRatio = (ViewGroup) findViewById(R.id.state_aspect_ratio);
             mWrapperStateAspectRatio.setOnClickListener(mStateClickListener);
