@@ -556,7 +556,7 @@ public class UCropActivity extends AppCompatActivity {
     }
 
     private void reset() {
-        mGestureCropImageView.zoomOutImage(1);
+        mGestureCropImageView.zoomOutImage(mGestureCropImageView.getMinScale());
         resetRotation(false);
     }
 
